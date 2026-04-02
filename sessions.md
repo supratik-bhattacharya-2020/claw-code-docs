@@ -70,8 +70,8 @@ flowchart TD
     FORMAT --> COMBINE["Summary + Recent msgs"]
     COMBINE --> RESULT["CompactionResult"]
 
-    style SKIP fill:#f5f5f5,stroke:#616161
-    style RESULT fill:#e8f5e9,stroke:#2e7d32
+    style SKIP fill:#f5f5f5,stroke:#616161,color:#000
+    style RESULT fill:#e8f5e9,stroke:#2e7d32,color:#000
 ```
 
 ### Compaction Config

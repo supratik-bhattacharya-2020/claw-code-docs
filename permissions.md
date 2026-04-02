@@ -28,11 +28,11 @@ graph TD
         A["Allow<br/><i>Auto-approves all</i>"]
     end
 
-    style RO fill:#e8f5e9,stroke:#2e7d32
-    style WW fill:#fff3e0,stroke:#ef6c00
-    style DFA fill:#ffebee,stroke:#c62828
-    style P fill:#e3f2fd,stroke:#1565c0
-    style A fill:#f5f5f5,stroke:#616161
+    style RO fill:#e8f5e9,stroke:#2e7d32,color:#000
+    style WW fill:#fff3e0,stroke:#ef6c00,color:#000
+    style DFA fill:#ffebee,stroke:#c62828,color:#000
+    style P fill:#e3f2fd,stroke:#1565c0,color:#000
+    style A fill:#f5f5f5,stroke:#616161,color:#000
 ```
 
 ## Authorization Decision Tree
@@ -54,11 +54,11 @@ flowchart TD
     DECISION -- Deny --> DENY2["✗ Deny<br/><i>user reason</i>"]
     PROMPTER -- No --> DENY3["✗ Deny<br/><i>no prompter</i>"]
 
-    style ALLOW fill:#e8f5e9,stroke:#2e7d32
-    style DENY fill:#ffebee,stroke:#c62828
-    style DENY2 fill:#ffebee,stroke:#c62828
-    style DENY3 fill:#ffebee,stroke:#c62828
-    style ASK fill:#e3f2fd,stroke:#1565c0
+    style ALLOW fill:#e8f5e9,stroke:#2e7d32,color:#000
+    style DENY fill:#ffebee,stroke:#c62828,color:#000
+    style DENY2 fill:#ffebee,stroke:#c62828,color:#000
+    style DENY3 fill:#ffebee,stroke:#c62828,color:#000
+    style ASK fill:#e3f2fd,stroke:#1565c0,color:#000
 ```
 
 ## The PermissionPrompter Trait

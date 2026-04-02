@@ -49,13 +49,13 @@ graph TD
     MCP --> SDK["Sdk<br/><i>name only</i>"]
     MCP --> PROXY["ClaudeAiProxy<br/><i>url + id</i>"]
 
-    style MCP fill:#fff3e0,stroke:#ef6c00
-    style STDIO fill:#e8f5e9,stroke:#2e7d32
-    style SSE fill:#e3f2fd,stroke:#1565c0
-    style HTTP fill:#e3f2fd,stroke:#1565c0
-    style WS fill:#f3e5f5,stroke:#7b1fa2
-    style SDK fill:#f5f5f5,stroke:#616161
-    style PROXY fill:#fce4ec,stroke:#c62828
+    style MCP fill:#fff3e0,stroke:#ef6c00,color:#000
+    style STDIO fill:#e8f5e9,stroke:#2e7d32,color:#000
+    style SSE fill:#e3f2fd,stroke:#1565c0,color:#000
+    style HTTP fill:#e3f2fd,stroke:#1565c0,color:#000
+    style WS fill:#f3e5f5,stroke:#7b1fa2,color:#000
+    style SDK fill:#f5f5f5,stroke:#616161,color:#000
+    style PROXY fill:#fce4ec,stroke:#c62828,color:#000
 ```
 
 ## Server Signatures

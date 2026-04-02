@@ -33,9 +33,9 @@ flowchart TD
     INTRO --> STYLE --> SYSTEM --> TASKS --> ACTIONS
     ENV --> PROJECT --> CLAUDE --> CONFIG --> APPEND
 
-    style Static fill:#e3f2fd,stroke:#1565c0
-    style Dynamic fill:#fff3e0,stroke:#ef6c00
-    style BOUNDARY fill:#ffebee,stroke:#c62828
+    style Static fill:#e3f2fd,stroke:#1565c0,color:#000
+    style Dynamic fill:#fff3e0,stroke:#ef6c00,color:#000
+    style BOUNDARY fill:#ffebee,stroke:#c62828,color:#000
 ```
 
 ::: info The Dynamic Boundary
@@ -65,9 +65,9 @@ flowchart TD
 
     ROOT --> PARENT --> CWD
 
-    style ROOT fill:#e3f2fd,stroke:#1565c0
-    style PARENT fill:#fff3e0,stroke:#ef6c00
-    style CWD fill:#e8f5e9,stroke:#2e7d32
+    style ROOT fill:#e3f2fd,stroke:#1565c0,color:#000
+    style PARENT fill:#fff3e0,stroke:#ef6c00,color:#000
+    style CWD fill:#e8f5e9,stroke:#2e7d32,color:#000
 ```
 
 For **each directory** (from root down to cwd), these files are checked in order:

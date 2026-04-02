@@ -50,12 +50,12 @@ flowchart LR
     Specs --> Registry
     Registry --> Impls
 
-    style DFA fill:#ffebee,stroke:#c62828
-    style WW fill:#fff3e0,stroke:#ef6c00
-    style RO fill:#e8f5e9,stroke:#2e7d32
-    style Registry fill:#fff3e0,stroke:#ef6c00
-    style MVP fill:#e8f5e9,stroke:#2e7d32
-    style STATIC fill:#f3e5f5,stroke:#7b1fa2
+    style DFA fill:#ffebee,stroke:#c62828,color:#000
+    style WW fill:#fff3e0,stroke:#ef6c00,color:#000
+    style RO fill:#e8f5e9,stroke:#2e7d32,color:#000
+    style Registry fill:#fff3e0,stroke:#ef6c00,color:#000
+    style MVP fill:#e8f5e9,stroke:#2e7d32,color:#000
+    style STATIC fill:#f3e5f5,stroke:#7b1fa2,color:#000
 ```
 
 ## Tool Manifest
@@ -129,9 +129,9 @@ graph TD
         PowerShell
     end
 
-    style RO fill:#e8f5e9,stroke:#2e7d32
-    style WW fill:#fff3e0,stroke:#ef6c00
-    style DFA fill:#ffebee,stroke:#c62828
+    style RO fill:#e8f5e9,stroke:#2e7d32,color:#000
+    style WW fill:#fff3e0,stroke:#ef6c00,color:#000
+    style DFA fill:#ffebee,stroke:#c62828,color:#000
 ```
 
 ## The ToolExecutor Trait

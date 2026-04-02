@@ -61,9 +61,9 @@ flowchart TD
     J --> V["maybe_auto_compact()"]
     V --> W["Return TurnSummary"]
 
-    style A fill:#e8f5e9,stroke:#2e7d32
-    style W fill:#e8f5e9,stroke:#2e7d32
-    style ERR fill:#ffebee,stroke:#c62828
+    style A fill:#e8f5e9,stroke:#2e7d32,color:#000
+    style W fill:#e8f5e9,stroke:#2e7d32,color:#000
+    style ERR fill:#ffebee,stroke:#c62828,color:#000
 ```
 
 ## Step-by-Step Walkthrough

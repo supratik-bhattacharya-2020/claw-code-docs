@@ -8,7 +8,6 @@
 
 [![Built with VitePress](https://img.shields.io/badge/Built%20with-VitePress-646cff?style=for-the-badge&logo=vitepress&logoColor=white)](https://vitepress.dev)
 [![Rust](https://img.shields.io/badge/Source-Rust-dea584?style=for-the-badge&logo=rust&logoColor=white)](https://github.com/instructkr/claw-code)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
 </div>
 
@@ -50,12 +49,12 @@ graph TD
     COMPAT --> RUNTIME
     API --> RUNTIME
 
-    style CLI fill:#e8f5e9,stroke:#2e7d32
-    style RUNTIME fill:#fff3e0,stroke:#ef6c00
-    style API fill:#e3f2fd,stroke:#1565c0
-    style TOOLS fill:#fce4ec,stroke:#c62828
-    style COMMANDS fill:#f3e5f5,stroke:#7b1fa2
-    style COMPAT fill:#f5f5f5,stroke:#616161
+    style CLI fill:#e8f5e9,stroke:#2e7d32,color:#000
+    style RUNTIME fill:#fff3e0,stroke:#ef6c00,color:#000
+    style API fill:#e3f2fd,stroke:#1565c0,color:#000
+    style TOOLS fill:#fce4ec,stroke:#c62828,color:#000
+    style COMMANDS fill:#f3e5f5,stroke:#7b1fa2,color:#000
+    style COMPAT fill:#f5f5f5,stroke:#616161,color:#000
 ```
 
 ### The Agentic Loop
@@ -90,9 +89,9 @@ flowchart TD
     J --> V["maybe_auto_compact()"]
     V --> W["Return TurnSummary"]
 
-    style A fill:#e8f5e9,stroke:#2e7d32
-    style W fill:#e8f5e9,stroke:#2e7d32
-    style ERR fill:#ffebee,stroke:#c62828
+    style A fill:#e8f5e9,stroke:#2e7d32,color:#000
+    style W fill:#e8f5e9,stroke:#2e7d32,color:#000
+    style ERR fill:#ffebee,stroke:#c62828,color:#000
 ```
 
 ### 19 Tools Across 3 Permission Tiers
@@ -129,9 +128,9 @@ graph TD
         PowerShell
     end
 
-    style RO fill:#e8f5e9,stroke:#2e7d32
-    style WW fill:#fff3e0,stroke:#ef6c00
-    style DFA fill:#ffebee,stroke:#c62828
+    style RO fill:#e8f5e9,stroke:#2e7d32,color:#000
+    style WW fill:#fff3e0,stroke:#ef6c00,color:#000
+    style DFA fill:#ffebee,stroke:#c62828,color:#000
 ```
 
 ### Data Flow
