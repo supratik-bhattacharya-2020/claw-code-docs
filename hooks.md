@@ -15,23 +15,23 @@ sequenceDiagram
     Hook->>Shell: spawn(command, env vars + JSON stdin)
     Shell-->>Hook: exit code + stdout + stderr
 
-    alt exit 0 → Allow
+    alt exit 0 - Allow
         Hook-->>Loop: Allow (+ optional message)
         Loop->>Tool: execute(tool_name, input)
         Tool-->>Loop: result
         Loop->>Hook: run_post_tool_use(tool_name, input, output)
         Hook->>Shell: spawn(command, env vars + JSON stdin)
         Shell-->>Hook: exit code + stdout
-        alt exit 0 → Allow
+        alt exit 0 - Allow
             Hook-->>Loop: Allow (+ feedback appended)
-        else exit 2 → Deny
+        else exit 2 - Deny
             Hook-->>Loop: Deny (mark as error)
-        else other → Warn
+        else other - Warn
             Hook-->>Loop: Warn (allow but log warning)
         end
-    else exit 2 → Deny
+    else exit 2 - Deny
         Hook-->>Loop: Denied! Tool never executes.
-    else other exit → Warn
+    else other exit - Warn
         Hook-->>Loop: Warn (allow tool to proceed)
         Loop->>Tool: execute(tool_name, input)
     end

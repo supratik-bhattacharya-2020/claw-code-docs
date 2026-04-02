@@ -15,22 +15,22 @@ hero:
 
 features:
   - title: The Agentic Loop
-    details: A generic, trait-based conversation runtime that drives the core user → API → tool → result cycle.
+    details: "A generic, trait-based conversation runtime that drives the core user \u2192 API \u2192 tool \u2192 result cycle."
     link: /agentic-loop
   - title: Permission Model
-    details: 5 escalating permission modes with a pluggable prompter trait for interactive approval.
+    details: "5 escalating permission modes with a pluggable prompter trait for interactive approval."
     link: /permissions
   - title: Tool System
-    details: 19 built-in tools from bash execution to web search, all registered through a unified trait.
+    details: "19 built-in tools from bash execution to web search, all registered through a unified trait."
     link: /tools
   - title: Hook System
-    details: Shell-based PreToolUse and PostToolUse hooks with exit-code-driven allow/deny/warn semantics.
+    details: "Shell-based PreToolUse and PostToolUse hooks with exit-code-driven allow/deny/warn semantics."
     link: /hooks
   - title: Session & Compaction
-    details: Persistent JSON sessions with automatic compaction that summarizes old messages to stay within context limits.
+    details: "Persistent JSON sessions with automatic compaction that summarizes old messages to stay within context limits."
     link: /sessions
   - title: MCP Integration
-    details: Stdio and remote MCP server support with tool namespacing, config hashing, and CCR proxy unwrapping.
+    details: "Stdio and remote MCP server support with tool namespacing, config hashing, and CCR proxy unwrapping."
     link: /mcp
 ---
 
