@@ -33,6 +33,14 @@ This makes the entire system testable with mock implementations.
 
 This is the core method. Here's what happens when you type a message:
 
+### Interactive Walkthrough
+
+Click through each step or hit play to auto-advance:
+
+<AgentLoopStepper />
+
+### Flowchart Overview
+
 ```mermaid
 flowchart TD
     A["User sends message"] --> B["Push to session"]
