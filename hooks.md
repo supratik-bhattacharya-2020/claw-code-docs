@@ -6,34 +6,34 @@ Hooks allow external shell commands to **intercept tool execution** at two point
 
 ```mermaid
 sequenceDiagram
-    participant Loop as Agentic Loop
+    participant Agent as Agentic Loop
     participant Hook as HookRunner
     participant Shell as Shell Process
     participant Tool as ToolExecutor
 
-    Loop->>Hook: run_pre_tool_use(tool_name, input)
+    Agent->>Hook: run_pre_tool_use(tool_name, input)
     Hook->>Shell: spawn(command, env vars + JSON stdin)
     Shell-->>Hook: exit code + stdout + stderr
 
     alt exit 0 - Allow
-        Hook-->>Loop: Allow (+ optional message)
-        Loop->>Tool: execute(tool_name, input)
-        Tool-->>Loop: result
-        Loop->>Hook: run_post_tool_use(tool_name, input, output)
+        Hook-->>Agent: Allow (+ optional message)
+        Agent->>Tool: execute(tool_name, input)
+        Tool-->>Agent: result
+        Agent->>Hook: run_post_tool_use(tool_name, input, output)
         Hook->>Shell: spawn(command, env vars + JSON stdin)
         Shell-->>Hook: exit code + stdout
         alt exit 0 - Allow
-            Hook-->>Loop: Allow (+ feedback appended)
+            Hook-->>Agent: Allow (+ feedback appended)
         else exit 2 - Deny
-            Hook-->>Loop: Deny (mark as error)
+            Hook-->>Agent: Deny (mark as error)
         else other - Warn
-            Hook-->>Loop: Warn (allow but log warning)
+            Hook-->>Agent: Warn (allow but log warning)
         end
     else exit 2 - Deny
-        Hook-->>Loop: Denied! Tool never executes.
+        Hook-->>Agent: Denied! Tool never executes.
     else other exit - Warn
-        Hook-->>Loop: Warn (allow tool to proceed)
-        Loop->>Tool: execute(tool_name, input)
+        Hook-->>Agent: Warn (allow tool to proceed)
+        Agent->>Tool: execute(tool_name, input)
     end
 ```
 
