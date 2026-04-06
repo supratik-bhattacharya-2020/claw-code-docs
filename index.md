@@ -18,7 +18,7 @@ features:
     details: "A generic, trait-based conversation runtime that drives the core user \u2192 API \u2192 tool \u2192 result cycle."
     link: /agentic-loop
   - title: Permission Model
-    details: "5 escalating permission modes with a pluggable prompter trait for interactive approval."
+    details: "3 escalation modes + 2 behavioral modes with a pluggable prompter trait for interactive approval."
     link: /permissions
   - title: Tool System
     details: "19 built-in tools from bash execution to web search, all registered through a unified trait."

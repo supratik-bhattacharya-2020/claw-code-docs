@@ -113,7 +113,7 @@ For each `tool_use` block in the assistant's response:
 
 ### 5. Auto-Compaction Check
 
-After the loop ends, `maybe_auto_compact()` checks if cumulative input tokens exceed the threshold (default: 200,000). If so, older messages are compacted into a summary.
+After the loop ends, `maybe_auto_compact()` checks if cumulative input tokens exceed the threshold (default: 200,000). If so, `compact_session()` runs **locally** — it does not call an LLM. The compactor counts message roles, collects tool names, extracts recent user requests, infers pending work from keywords (todo, next, pending, remaining), and identifies key files. Older messages are replaced with a `System` message containing this summary. Recent messages (default: last 4) are preserved verbatim.
 
 ### 6. Return Summary
 

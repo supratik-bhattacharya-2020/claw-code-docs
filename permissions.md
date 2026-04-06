@@ -1,14 +1,19 @@
 # Permission Model
 
-The permission system controls which tools the agent can use. It has **5 escalating modes** and a pluggable **prompter trait** that allows interactive approval during execution.
+The permission system controls which tools the agent can use. It has **3 escalating capability modes**, **2 orthogonal behavioral modes**, and a pluggable **prompter trait** that allows interactive approval during execution.
 
 ## The 5 Permission Modes
 
+The enum has 5 variants, but they form **two distinct groups**:
+
 ```rust
 pub enum PermissionMode {
+    // Capability escalation (linear hierarchy):
     ReadOnly,           // Can only read files, search, fetch
     WorkspaceWrite,     // Can also write/edit files
     DangerFullAccess,   // Can run bash, REPL, PowerShell
+
+    // Behavioral modes (orthogonal — not part of escalation):
     Prompt,             // Always asks the user
     Allow,              // Allows everything without asking
 }
@@ -81,7 +86,7 @@ pub enum PermissionPromptDecision {
 }
 ```
 
-The prompter is passed as `Option<&mut dyn PermissionPrompter>`. When the user runs the CLI interactively, the REPL provides a prompter that renders a TUI confirmation dialog. In tests, mock prompters are used.
+The prompter is passed as `Option<&mut dyn PermissionPrompter>`. When the user runs the CLI interactively, the REPL provides a prompter that renders a confirmation prompt in the terminal (using rustyline for input, not a TUI framework). In tests, mock prompters are used.
 
 ## Per-Tool Requirements
 

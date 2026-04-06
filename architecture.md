@@ -58,7 +58,7 @@ Here's a quick reference of what lives where:
 | Module | Responsibility |
 |:--|:--|
 | `conversation.rs` | `ConversationRuntime` — the agentic loop |
-| `permissions.rs` | 5 permission modes + `PermissionPrompter` trait |
+| `permissions.rs` | 3 escalation modes + 2 behavioral modes + `PermissionPrompter` trait |
 | `hooks.rs` | PreToolUse / PostToolUse shell hooks |
 | `session.rs` | Session persistence with custom JSON parser |
 | `compact.rs` | Auto-compaction algorithm |
