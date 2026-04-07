@@ -17,7 +17,7 @@
 
 An interactive documentation site that reverse-engineers the architecture of **claw-code** — a working CLI agent built in Rust that can converse with the Anthropic API, execute tools, manage sessions, and enforce permissions.
 
-The docs cover **6 Rust crates**, **19 built-in tools**, **5 permission modes**, **22 slash commands**, and every major subsystem — all with Mermaid diagrams verified against the source code.
+The docs cover **6 Rust crates**, **19 built-in tools**, **3 escalation + 2 behavioral permission modes**, **22 slash commands**, and every major subsystem — all with Mermaid diagrams verified against the source code.
 
 ---
 
@@ -178,7 +178,7 @@ sequenceDiagram
 | [Architecture Overview](architecture.md) | Crate map, module index, data flow |
 | [The Agentic Loop](agentic-loop.md) | `ConversationRuntime`, `run_turn()`, event types |
 | [Tool System](tools.md) | 19 tools, `ToolExecutor` trait, agent sub-loops |
-| [Permission Model](permissions.md) | 5 modes, authorization logic, escalation |
+| [Permission Model](permissions.md) | 3 escalation + 2 behavioral modes, authorization logic |
 | [Hook System](hooks.md) | PreToolUse/PostToolUse lifecycle, exit codes |
 | [Session & Compaction](sessions.md) | Persistence, auto-compaction, token estimation |
 | [API Client](api-client.md) | OAuth PKCE, SSE streaming, retry strategy |
@@ -196,6 +196,23 @@ sequenceDiagram
 - **🔧 No dependencies for basics** — Hand-rolled SSE parser, JSON parser, base64url encoder, percent encoder. No serde for sessions.
 - **📏 Token estimation** — `text.len() / 4 + 1`. No tokenizer needed.
 - **🔑 Exit code 2 = Deny** — Hooks use Unix convention: 0 = allow, 2 = deny, anything else = warn but continue.
+
+---
+
+## Interactive Terminal Replay
+
+An interactive sandbox that simulates real Claude Code sessions while highlighting the architecture under the hood:
+
+<div align="center">
+<img src="sandbox/demo.gif" alt="Terminal Replay Demo — showing the Full Agent Loop, Permission Escalation, and Multi-Tool scenarios" width="800" />
+</div>
+
+Three scenarios with verified source paths:
+- **Full Agent Loop** — input → prompt → API → `read_file` → `edit_file` → `bash` (permission escalation) → `end_turn`
+- **Permission Escalation** — `WorkspaceWrite` < `DangerFullAccess` → `PermissionPrompter::decide()` → `PreToolUse` hook → `execute_bash()`
+- **Multi-Tool** — hook denial (exit 2), auto-compaction (`compact.rs`, local summarization), `Agent` tool sub-task
+
+Open [`sandbox/index.html`](sandbox/index.html) in any browser to try it — no build step needed.
 
 ---
 
