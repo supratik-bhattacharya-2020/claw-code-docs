@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claude Code — Terminal Replay</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Scenario Tabs -->
+    <div class="scenario-tabs">
+      <button
+        v-for="(s, i) in scenarios"
+        :key="i"
+        :class="['tab', { active: currentScenario === i }]"
+        @click="switchScenario(i)"
+      >{{ s.title }}</button>
+    </div>
+
+    <!-- Two-panel layout -->
+    <div class="panels">
+      <!-- Left: Terminal -->
+      <div class="panel terminal-panel">
+        <div class="terminal-titlebar">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="terminal-title">claude — bash</span>
+        </div>
+        <div class="terminal-body" ref="terminalBody">
+          <div v-for="(line, i) in terminalLines" :key="i" :class="['term-line', line.cls]">
+            <span v-html="line.html"></span>
+          </div>
+          <!-- Active typing line -->
+          <div v-if="activeLine !== null" :class="['term-line', activeLine.cls]">
+            <span v-html="activeLine.html"></span>
+            <span class="cursor" :class="{ blink: !isTyping }"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Architecture -->
+      <div class="panel arch-panel">
+        <div class="arch-title">Under the Hood</div>
+        <div class="flow-diagram">
+          <div
+            v-for="(node, i) in archNodes"
+            :key="node.id"
+            :class="['flow-node', nodeState(node.id)]"
+          >
+            <div class="node-icon">{{ nodeIcon(node.id) }}</div>
+            <div class="node-label">{{ node.label }}</div>
+            <div v-if="i < archNodes.length - 1" class="flow-connector">
+              <div class="connector-line" :class="connectorState(node.id)"></div>
+            </div>
+          </div>
+        </div>
+        <transition name="info-fade">
+          <div v-if="activeInfo" class="info-card" :key="activeInfo.subsystem">
+            <div class="info-subsystem">{{ activeInfo.subsystem }}</div>
+            <div class="info-file">{{ activeInfo.file }}</div>
+            <div class="info-desc">{{ activeInfo.description }}</div>
+          </div>
+        </transition>
+      </div>
+    </div>
+
+    <!-- Playback Controls -->
+    <div class="controls">
+      <button class="ctrl-btn" @click="togglePlay" :title="playing ? 'Pause (Space)' : 'Play (Space)'">
+        {{ playing ? '⏸' : '▶' }}
+      </button>
+      <div class="progress-container" @click="scrub">
+        <div class="progress-bar">
+          <div class="progress-fill" :style="{ width: progressPct + '%' }"></div>
+        </div>
+        <div class="progress-label">{{ frameIndex }} / {{ totalFrames }}</div>
+      </div>
+      <div class="speed-selector">
+        <button
+          v-for="sp in speeds"
+          :key="sp"
+          :class="['speed-btn', { active: speed === sp }]"
+          @click="speed = sp"
+        >{{ sp }}x</button>
+      </div>
+      <button class="ctrl-btn" @click="restart" title="Restart">⏮</button>
+    </div>
+
+    <div class="keyboard-hint">
+      Space: play/pause &nbsp; ←→: prev/next frame &nbsp; 1-4: speed
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script src="scenarios/full-loop.js"></script>
+  <script src="scenarios/permission.js"></script>
+  <script src="scenarios/multi-tool.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
